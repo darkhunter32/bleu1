@@ -14,7 +14,7 @@
 if (!function_exists('page')) {
     function page ($slug)
     {
-        $c_lang = url('/')->current();
+        $c_lang = base_url()->current();
 if((strpos($c_lang, url('/').'/fr/') !== false)||(strpos($c_lang, url('/').'/en/') !== false)) echo '';else \App::setLocale('fr');
         $pages = TCG\Voyager\Models\Page::where('slug', '=', $slug)->firstOrFail()->translate(config('global.lang_trans'));
         
@@ -24,7 +24,7 @@ if((strpos($c_lang, url('/').'/fr/') !== false)||(strpos($c_lang, url('/').'/en/
     if (!function_exists('slider')) {
         function slider ($slug)
         {
-            $c_lang = url('/')->current();
+            $c_lang = base_url()->current();
 if((strpos($c_lang, url('/').'/fr/') !== false)||(strpos($c_lang, url('/').'/en/') !== false)) echo '';else \App::setLocale('fr');
             $page = TCG\Voyager\Models\Page::where('slug', '=', $slug)->firstOrFail()->translate(config('global.lang_trans'));
             $fsliders = App\FSlider::all()->where('page', '=', $page->id)->sortByDesc('id')->translate(config('global.lang_trans')); 
