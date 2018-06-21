@@ -1,0 +1,1 @@
+<div class="modal fade" id="modal-wnd" tabindex="-1" role="dialog"><div class="modal-dialog" role="document" style="width: 30px;"><div class="modal-content"><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button><img src="#" alt=""></div></div></div><div class="test-img-size"><img src="#" alt=""></div>

@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<!-- saved from url=(0022)http://3dflipbook.net/ -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta name="viewport" content="width=device-width">
+    <title>
+      3D FlipBook - Interactive Model of Real Book Powered Physics Engine      </title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+  </head>
+
+  <body class="" style="">
+    
+    <div class="container">
+      <div class="content">
+        <div class="modal fade" id="modalView" tabindex="-1" role="dialog" aria-labelledby="headerLabel" style="display: none;">
+  <div class="modal-dialog" role="document" style="width: 660px; opacity: 0;">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
+        <h4 class="modal-title" id="headerLabel">3D FlipBook</h4>
+      </div>
+      <div class="modal-body"><img style="width: 600px; height: 351px;" src="images/physics.gif"></div>
+      <div class="modal-footer">Interactive, flexible corners. Physics based animation.</div>
+    </div>
+  </div>
+</div>
+
+<div class="fb3d-modal dark">
+  <a href="http://3dflipbook.net/#" class="cmd-close"><span class="glyphicon glyphicon-remove"></span></a>
+  <div class="mount-container"></div>
+</div>
+
+
+
+
+<div class="well">
+  <div class="books">
+    <div class="thumb">
+      <img id="theKingIsBlack" src="images/theKingIsBlack.jpg" class="btn" alt="The King is Black - setting the trend again">
+    </div>
+  </div>
+</div>
+
+<script src="js/html2canvas.min.js"></script>
+<script src="js/three.min.js"></script>
+<script src="js/pdf.min.js"></script>
+
+<script src="js/3dflipbook.min.js"></script>
+
+<script type="text/javascript">
+
+$(function() {
+
+  function theKingIsBlackPageCallback(n) {
+    return {
+      type: 'image',
+      src: 'books/image/theKingIsBlack/'+(n+1)+'.jpg',
+      interactive: false
+    };
+  }
+  var booksOptions = {
+    theKingIsBlack: {
+      pageCallback: theKingIsBlackPageCallback,
+      pages: 14,
+      propertiesCallback: function(props) {
+        props.cover.color = 0x000000;
+        return props;
+      },
+      template: {
+        html: 'templates/default-book-view.html',
+        styles: [
+          'css/font-awesome.min.css',
+          'css/short-white-book-view.css'
+        ],
+        script: 'js/default-book-view.js',
+        sounds: {
+          startFlip: 'sounds/start-flip.mp3',
+          endFlip: 'sounds/end-flip.mp3'
+        }
+      },
+      styleClb: function() {
+        $('.fb3d-modal').removeClass('light').addClass('dark');
+      }
+    },
+    theThreeMusketeers: {
+      pdf: 'books/pdf/TheThreeMusketeers.pdf',
+      downloadURL: 'books/pdf/TheThreeMusketeers.pdf',
+      template: {
+        html: 'templates/default-book-view.html',
+        styles: [
+          'css/font-awesome.min.css',
+          'css/short-black-book-view.css'
+        ],
+        script: 'js/default-book-view.js',
+        sounds: {
+          startFlip: 'sounds/start-flip.mp3',
+          endFlip: 'sounds/end-flip.mp3'
+        }
+      },
+      propertiesCallback: function(props) {
+        props.page.depth /= 4;
+        props.cover.padding = 0.002;
+        props.cover.binderTexture = 'books/pdf/binder/TheThreeMusketeers.jpg';
+        return props;
+      },
+      styleClb: function() {
+        $('.fb3d-modal').removeClass('dark').addClass('light');
+      }
+    }
+  };
+
+  var instance = {
+    scene: undefined,
+    options: undefined,
+    node: $('.fb3d-modal .mount-container')
+  };
+
+  var modal = $('.fb3d-modal');
+    modal.on('fb3d.modal.hide', function() {
+      instance.scene.dispose();
+    });
+    modal.on('fb3d.modal.show', function() {
+      instance.scene = instance.node.FlipBook(instance.options);
+      instance.options.styleClb();
+    });
+    $('.books').find('img').click(function(e) {
+      if(e.target.id) {
+        instance.options = booksOptions[e.target.id];
+        $('.fb3d-modal').fb3dModal('show');
+      }
+    });
+  });
+
+  $('#modalView').on('shown.bs.modal', function() {
+     $(this).find('.modal-dialog').css({
+        width: ($(this).find('.modal-body').find('*').width()+60)+'px',
+        opacity: 1
+     });
+  });
+  $('#modalView').on('hidden.bs.modal', function() {
+     $(this).find('.modal-dialog').css({
+        opacity: 0
+     });
+  });
+
+  $('.image-preview .pbtn').click(function(e) {
+    var target = e.target;
+    while(target && !$(target).hasClass('wrap')) {
+      target = target.parentNode;
+    }
+
+    var view = $('#modalView'), body = view.find('.modal-body'), footer = view.find('.modal-footer');
+    body.html($('<img style="width: '+$(target).css('width')+'; height: '+$(target).css('height')+';" src="images/'+e.target.id+'.gif">'));
+    footer.html($(e.target).attr('data'));
+    view.modal('show');
+  });
+
+  $('.img-link').click(function(e) {
+    e.preventDefault();
+    $($(e.target).attr('href')).trigger('click');
+  });
+</script>
+      </div>
+      
+    </div>
+    <script src="js/script.js"></script>
+  
+  
+
+<div class="modal fade" id="modal-wnd" tabindex="-1" role="dialog"><div class="modal-dialog" role="document" style="width: 30px;"><div class="modal-content"><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button><img src="http://3dflipbook.net/" alt=""></div></div></div><div class="test-img-size"><img src="http://3dflipbook.net/" alt=""></div></body></html>

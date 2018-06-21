@@ -1,0 +1,361 @@
+/* 
+- Name: megamenu.js - style.css
+- Version: 1.0
+- Latest update: 29.01.2016.
+- Author: Mario Loncarek
+- Author web site: http://marioloncarek.com
+*/
+
+
+/* ––––––––––––––––––––––––––––––––––––––––––––––––––
+Body - not related to megamenu
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+
+
+
+* {
+    box-sizing: border-box;
+}
+
+
+
+
+/* ––––––––––––––––––––––––––––––––––––––––––––––––––
+megamenu.js STYLE STARTS HERE
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+
+
+/* ––––––––––––––––––––––––––––––––––––––––––––––––––
+Screen style's
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+
+.menu-container {
+    width: 100%;
+    margin: 0 auto;
+    background:transparent;
+    height: 50px;
+}
+
+.menu-mobile {
+    display: none;
+    padding: 10px;
+}
+
+.menu {
+    margin-top: 53px;
+    height: 50px;
+}
+
+.menu-mobile:after {
+    content: "\f394";
+    font-family: "Ionicons";
+    font-size: 2.5rem;
+    padding: 0;
+    float: right;
+    position: relative;
+    top: 50%;
+    -webkit-transform: translateY(-25%);
+    -ms-transform: translateY(-25%);
+    transform: translateY(-25%);
+}
+
+.menu-dropdown-icon:before {
+    content: "\f489";
+    font-family: "Ionicons";
+    display: none;
+    cursor: pointer;
+    float: right;
+    padding: 0em 0.7em;
+    background: #ebb51f;
+    color: #333;
+}
+
+.menu > ul {
+    margin: 0 auto;
+    width: 100%;
+    list-style: none !important;
+    padding: 0;
+    position: relative;
+    /* IF .menu position=relative -> ul = container width, ELSE ul = 100% width */
+    box-sizing: border-box;
+}
+
+.menu > ul:before,
+.menu > ul:after {
+    content: "";
+    display: table;
+}
+
+.menu > ul:after {
+    clear: both;
+}
+
+.menu > ul > li {
+    float: right;
+    background: transparent;
+    padding: 0;
+    margin: 0;
+    list-style: none !important;
+}
+
+.menu > ul > li a {
+    text-decoration: none;
+    padding: 1.5em 3em;
+    display: block;
+    font-size: 11px;
+    font-weight: 400;
+    text-transform: uppercase;
+    color: #ffffff ;
+}
+
+.menu > ul > li a:hover {
+    
+    color: #ebb51f;
+}
+.menu > ul > li a:visited {
+    
+    color: #ffffff;
+}
+
+.menu > ul > li > ul {
+    display: none;
+    width: 100%;
+    background: #010101;
+    padding: 20px;
+    position: absolute;
+    z-index: 99;
+    left: 0;
+    margin: 0;
+    list-style: none;
+    box-sizing: border-box;
+}
+
+.menu > ul > li > ul:before,
+.menu > ul > li > ul:after {
+    content: "";
+    display: table;
+}
+
+.menu > ul > li > ul:after {
+    clear: both;
+}
+
+.menu > ul > li > ul > li {
+    margin: 0;
+    padding-bottom: 0;
+    list-style: none;
+    width: 14.28%;
+    background: none;
+    float: left;
+}
+
+.menu > ul > li > ul > li a {
+    color: #ffffff;
+    padding: .2em 0;
+    width: 95%;
+    display: block;
+    border-bottom: 1px solid #ccc;
+    height: 60px;
+    
+}
+.menu .head{
+    color: #010101 !important;
+    text-align: center;
+    background-color: #ebb51f;
+}
+.menu .head:hover{
+    color: #ebb51f;
+    text-align: center;
+    background-color: #010101;
+    color: white !important
+}
+.rp{    background-color: #ebb51f;
+    padding: 5px !important;
+    margin-top: 10px;
+    color: #151515 !important;
+    border-radius: 2px;}
+    .rp:hover{    
+        background-color: #010101;
+        padding: 3px !important;
+        margin-top: 10px;
+        color: #ffffff !important;
+        border-radius: 2px;
+    border: 1px solid white;}
+
+.menu > ul > li > ul > li > ul > li a {
+    
+    height: 10px;
+    
+}
+.menu > ul > li > ul > li > ul {
+    display: block;
+    padding: 0;
+    margin: 10px 0 0;
+    list-style: none;
+    box-sizing: border-box;
+}
+
+.menu > ul > li > ul > li > ul:before,
+.menu > ul > li > ul > li > ul:after {
+    content: "";
+    display: table;
+}
+
+.menu > ul > li > ul > li > ul:after {
+    clear: both;
+}
+
+.menu > ul > li > ul > li > ul > li {
+    float: left;
+    width: 100%;
+    padding: 5px 0;
+    margin: 0;
+    font-size: .8em;
+    list-style: none;
+}
+
+.menu > ul > li > ul > li > ul > li a {
+    border: 0;
+    font-size: 11px;
+    text-transform: capitalize;
+    display: inline-block;
+    padding-left: 5px
+}
+
+.menu > ul > li > ul.normal-sub {
+    width: 300px;
+    left: auto;
+    padding: 10px 20px;
+}
+
+.menu > ul > li > ul.normal-sub > li {
+    width: 100%;
+}
+
+.menu > ul > li > ul.normal-sub > li a {
+    border: 0;
+    padding: 1em 0;
+}
+
+#top_menu{
+    display: inline-block;
+    top: -82px;
+}
+#top_menu  li a:link{
+    font-size: 10px !important;
+    
+}
+#bottom_menu{
+    display: inline-block;
+    top: -103px;
+}
+/* ––––––––––––––––––––––––––––––––––––––––––––––––––
+Mobile style's
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+
+@media only screen and (max-width: 1000px) {
+    .menu-container {
+        width: 100%;
+    }
+    .menu-mobile {
+        display: block;
+        
+    }
+    .menu-mobile:link {
+        
+        color:white
+    }
+    .menu-mobile:active {
+        
+        color:#ebb51f;
+    }
+    .menu-mobile:visited {
+        
+        color:#ffffff;
+    }
+    .menu-dropdown-icon:before {
+        display: block;
+    }
+    .menu > ul {
+        display: none;
+        transform: rotate(180deg);
+        -moz-transform: rotate(180deg);
+    -webkit-transform: rotate(180deg);
+    }
+    .menu > ul > li {
+        width: 100%;
+        float: none;
+        display: block;
+        transform: rotate(-180deg);
+        -moz-transform: rotate(-180deg);
+    -webkit-transform: rotate(-180deg);
+    }
+    .menu > ul > li a {
+        padding: 1.5em;
+        width: 100%;
+        display: block;
+    }
+    .menu > ul > li > ul {
+        position: relative;
+    }
+    .menu > ul > li > ul.normal-sub {
+        width: 100%;
+    }
+    .menu > ul > li > ul > li {
+        float: none;
+        width: 100%;
+        margin-top: 20px;
+    }
+    .menu > ul > li > ul > li:first-child {
+        margin: 0;
+    }
+    .menu > ul > li > ul > li > ul {
+        position: relative;
+        direction: ltr;
+    }
+    .menu > ul > li > ul > li > ul > li {
+        float: none;
+    }
+    .menu .show-on-mobile {
+        display: block !important;
+        height: 300px;
+        overflow-y: scroll;
+        background-color: #010101;
+        direction: rtl;
+        overflow-x: hidden;
+    }
+    .menu > ul > li > ul {
+        
+        background: #ebb51f;
+       
+    }
+    .menu > ul > li > ul > li a {
+        height: 10px;    
+    }
+    .menu > ul > li > ul > li a:hover {
+        color:#010101;    
+    }
+    .menu > ul > li > ul > li > ul > li  a:visited {
+        color:#ffffff;    
+    }
+    .menu .head{
+        color: #ebb51f !important;
+        text-align: center;
+        background-color: #010101;
+        height: auto;
+    }
+    .menu .head:hover{
+        color: #ffffff;
+        text-align: center;
+        background-color: #010101;
+    }
+    #top_menu{
+        display: none;
+       
+    }
+   
+    #bottom_menu{
+        display: none;
+       
+    }
+}
